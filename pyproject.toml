@@ -1,0 +1,18 @@
+[project]
+name = "patient-view2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "authlib>=1.9.1",
+    "requests>=2.34.2",
+    "thefuzz>=0.22.1",
+]
+
+[project.scripts]
+patient-view2 = "patient_view2:main"
+
+[build-system]
+requires = ["uv_build>=0.13.5,<0.14.0"]
+build-backend = "uv_build"

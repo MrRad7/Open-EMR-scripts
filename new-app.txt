@@ -1,0 +1,62 @@
+#Register a new app
+curl -k -X POST https://localhost/oauth2/default/registration \
+  -H 'Content-Type: application/json' \
+  --data '{
+    "client_name": "My App",
+    "redirect_uris": ["https://myapp.example.com/callback"],
+    "scope": "openid api:fhir patient/Patient.rs patient/Observation.rs"
+  }'
+  
+  
+
+curl -k -X GET 'https://localhost/apis/default/fhir/Patient' \
+  -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJteTdTdWl0NU1PWlRVT1hrMTBVZlV4b3NWYm0xcFhVQS1LNEtHVXkzQWpzIiwianRpIjoiYjM2ZWZiZTY5NTQyYzVkYzNjN2RiODhmZjc0MjExYTk2YmYwYmNkMWU2ZDFiNTc5NmQyOTkxMDFhYThhZDY2Y2EyYjk4MTcyZTMwZDMxYjYiLCJpYXQiOjE3OTMxMjY5MTQuNzI5Nzc4LCJuYmYiOjE3OTMxMjY5MTQuNzI5NzgsImV4cCI6MTc5MzEyNzIxNC43MTM4OTUsInN1YiI6ImEzMGI3OWU5LTcyZWEtNDQ4Ny05Y2NkLWIyNjBmMTdiZWQzOCIsInNjb3BlcyI6WyJ1c2VyL1BhdGllbnQucmVhZCJdLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdC9vYXV0aDIvZGVmYXVsdCJ9.UfCaeSks5qEd5t0oEdyCl9kyy_4nwB1rALNMd5q1ecqzmRuP3gVjvr5IkaPI0zm8K0eox76IrTLA-3njgVkcgn-CuupDZBA4LIqnr1wXJNxws_sOgv7TdnE_TCVlz2zzNXcOFmQHtRgEWXjtsCV-edjcRezVH2u9qxh4h05x-pRMnH2BHs-kZ4PAGOSZUOLtbT7ziztYeER0JX8uIKT3c2RmL1PeekZwkA2djErW5-9UJYAjedHBcubk6S48Wyz1LjukiEtD6bSEzfAEqj8fKNlhEl_aRPwPvbRisN2UGICvQXppJbNRz8m-VRUgilhaki41PGHS_7-G9BWHZgob7A' \
+  -H 'Accept: application/json'
+  
+
+#register App9
+curl -X POST -k -H 'Content-Type: application/json' \
+  https://localhost/oauth2/default/registration \
+  --data '{
+    "application_type": "private",
+    "redirect_uris":
+     ["http://localhost/oauth2/static/redirect"],
+    "client_name": "App9",
+    "token_endpoint_auth_method": "private_key_jwt",
+    "contacts": ["mstone@howardcc.edu"],
+    "jwks": {
+"keys": [
+
+{
+  "alg": "RS384",
+  "e": "AQAB",
+  "ext": true,
+  "key_ops": [
+    "verify"
+  ],
+  "kty": "RSA",
+  "n": "w6VUjZAZF6xkp6YZvz7v5WwO0GNM40unm_NclkJp6t9ft0QLXKZvN_WL5O1nE3V_7N_fKUki3FATZOahQS0iJ2W9tB_GnXOyLwQztdG_ewxhGNqj5aFoIkj6noKF7K7_OPzA6VJuZrFhDIWT3NUO0AX8Xou3X-c-PMYC_MygJ6coDgoAdMr_KSH--5CeSpBvFJwlIzQ7c84NlvlDtjOuZ6-D1a9xkBG9y_GkX2h1EbYjIeBUJesmLwCv3NgFB--Zivpz_HcubsHh0UVXvyGi3HjkC3GC34P_Rio6dUI6jyI0vCsnzyqUa2DaI63Gt2I--ktEqARbRz1iLLF5yv1U6KThDxl_d_rMGu2VNYTmRuivvsZuziQa0rK1OnOkLeuZmdukDWsSYyYrWP1y3FMa8MNc50DF_CNXdCXB2vUfc-GYZwcJilN_pl03nGA-hyKuaJkY5S-kJHULwWaLXTqi_fuhnkz7pnSXKeqZqDa3mSIFgoAg3Xvuua0t59XnyMCE_UozJ3xXgX96UcBBZxMZ31Z_kpK6z37fT8RE_OciDJn2N0h82cWcB-wIGCHSabvjYT2MWOtEXSlvjY7P6vps4O6cMIVUZ6ri7TFqeEBixubYSabQehAvE59JQXTww2eG_ztkigEFuPnBUqZ_QSD7kJHuGCKL75shxvz-VjBKLIc",
+  "kid": "openemr-key-001",
+  "use": "sig"
+}
+]
+}
+,
+    "scope": "openid offline_access api:oemr api:fhir system/Patient.write system/Condition.r system/Condition.c system/Condition.s system/Patient.s user/Patient.read user/Patient.write user/Observation.read"
+  }'
+  
+
+
+#Results
+# APP 8
+
+
+
+# APP 7
+{"client_id":"yZG0qO_ugWynI0K2AwQpeVqmDZkOZFNxKR58T9Fw_Tg","client_secret":"ddXfmIrecCK4nKzFaAiI-XtqmAo-tywtORTqVf4j0phbC2SGxRu8-zyJt1bqXk2DMCqt76NCJtzfxNSIzFmmEQ","registration_access_token":"8HgbYFoKfI3aJhYDeD9uJbfMjYZPNJ5i9IfoL34OBok","registration_client_uri":"https:\/\/localhost\/oauth2\/default\/client\/ynL6xGw7gQgB6eysQPO9Dg","client_id_issued_at":1793813766,"client_secret_expires_at":0,"client_role":"user","contacts":["mstone@howardcc.edu"],"application_type":"private","client_name":"App7","redirect_uris":["http:\/\/localhost\/oauth2\/static\/redirect"],"token_endpoint_auth_method":"private_key_jwt","jwks":{"keys":[{"alg":"RS384","e":"AQAB","ext":true,"key_ops":["verify"],"kty":"RSA","n":"w6VUjZAZF6xkp6YZvz7v5WwO0GNM40unm_NclkJp6t9ft0QLXKZvN_WL5O1nE3V_7N_fKUki3FATZOahQS0iJ2W9tB_GnXOyLwQztdG_ewxhGNqj5aFoIkj6noKF7K7_OPzA6VJuZrFhDIWT3NUO0AX8Xou3X-c-PMYC_MygJ6coDgoAdMr_KSH--5CeSpBvFJwlIzQ7c84NlvlDtjOuZ6-D1a9xkBG9y_GkX2h1EbYjIeBUJesmLwCv3NgFB--Zivpz_HcubsHh0UVXvyGi3HjkC3GC34P_Rio6dUI6jyI0vCsnzyqUa2DaI63Gt2I--ktEqARbRz1iLLF5yv1U6KThDxl_d_rMGu2VNYTmRuivvsZuziQa0rK1OnOkLeuZmdukDWsSYyYrWP1y3FMa8MNc50DF_CNXdCXB2vUfc-GYZwcJilN_pl03nGA-hyKuaJkY5S-kJHULwWaLXTqi_fuhnkz7pnSXKeqZqDa3mSIFgoAg3Xvuua0t59XnyMCE_UozJ3xXgX96UcBBZxMZ31Z_kpK6z37fT8RE_OciDJn2N0h82cWcB-wIGCHSabvjYT2MWOtEXSlvjY7P6vps4O6cMIVUZ6ri7TFqeEBixubYSabQehAvE59JQXTww2eG_ztkigEFuPnBUqZ_QSD7kJHuGCKL75shxvz-VjBKLIc","kid":"openemr-key-001","use":"sig"}]},"scope":"openid offline_access api:oemr api:fhir system\/Patient.write system\/Condition.c system\/Patient.s user\/Patient.read user\/Patient.write user\/Observation.read","grant_types":["authorization_code","client_credentials"],"dsi_type":"none"}
+
+{"client_id":"ip3ZgRpL4HMOuD-yaMmOH66Nip4DAsy-u7YvhyZbsMg","client_secret":"MowqhF6DXctTPlNATrrfwbofbf1AGR0G5Hf9POGteeo4uf9rOfsM1cir8A7Y8Kg8rwExyg4dJgTnV4gJ8yylDg","registration_access_token":"D99m66dsusk5CKxcGWmcW73a-P-xGKoim7lzzGV-dSI","registration_client_uri":"https:\/\/localhost\/oauth2\/default\/client\/HSDuAm6rmnJg51dYBAoeVg","client_id_issued_at":1793127114,"client_secret_expires_at":0,"client_role":"user","contacts":["mstone@howardcc.edu"],"application_type":"private","client_name":"App4","redirect_uris":["http:\/\/localhost\/oauth2\/static\/redirect"],"token_endpoint_auth_method":"private_key_jwt","jwks":{"keys":[{"alg":"RS384","e":"AQAB","ext":true,"key_ops":["verify"],"kty":"RSA","n":"w6VUjZAZF6xkp6YZvz7v5WwO0GNM40unm_NclkJp6t9ft0QLXKZvN_WL5O1nE3V_7N_fKUki3FATZOahQS0iJ2W9tB_GnXOyLwQztdG_ewxhGNqj5aFoIkj6noKF7K7_OPzA6VJuZrFhDIWT3NUO0AX8Xou3X-c-PMYC_MygJ6coDgoAdMr_KSH--5CeSpBvFJwlIzQ7c84NlvlDtjOuZ6-D1a9xkBG9y_GkX2h1EbYjIeBUJesmLwCv3NgFB--Zivpz_HcubsHh0UVXvyGi3HjkC3GC34P_Rio6dUI6jyI0vCsnzyqUa2DaI63Gt2I--ktEqARbRz1iLLF5yv1U6KThDxl_d_rMGu2VNYTmRuivvsZuziQa0rK1OnOkLeuZmdukDWsSYyYrWP1y3FMa8MNc50DF_CNXdCXB2vUfc-GYZwcJilN_pl03nGA-hyKuaJkY5S-kJHULwWaLXTqi_fuhnkz7pnSXKeqZqDa3mSIFgoAg3Xvuua0t59XnyMCE_UozJ3xXgX96UcBBZxMZ31Z_kpK6z37fT8RE_OciDJn2N0h82cWcB-wIGCHSabvjYT2MWOtEXSlvjY7P6vps4O6cMIVUZ6ri7TFqeEBixubYSabQehAvE59JQXTww2eG_ztkigEFuPnBUqZ_QSD7kJHuGCKL75shxvz-VjBKLIc","kid":"openemr-key-001","use":"sig"}]},"scope":"openid offline_access api:oemr api:fhir system\/Patient.s user\/Patient.read user\/Observation.read","dsi_type":"none"}
+
+{"client_id":"rMaUQHZEUKhlrzto1Aipv8jHeICY_GTxK1LiH1mtY4Y","client_secret":"8d7kvit80zuTwHSRNmKnrxs-BQMheyQ8U60P08CbZPTpzstEMV6vTNene_A1bk2wMOAR84pbI1F9p1yruluCqg","registration_access_token":"Fe0f6prco4Xbag7y90Isymvvi0q3BDQPnlUHKDgUi38","registration_client_uri":"https:\/\/localhost\/oauth2\/default\/client\/Aio_u-jZZr5atr4ukSd3VA","client_id_issued_at":1793294583,"client_secret_expires_at":0,"client_role":"user","contacts":["mstone@howardcc.edu"],"application_type":"private","client_name":"App4","redirect_uris":["http:\/\/localhost\/oauth2\/static\/redirect"],"token_endpoint_auth_method":"private_key_jwt","jwks":{"keys":[{"alg":"RS384","e":"AQAB","ext":true,"key_ops":["verify"],"kty":"RSA","n":"w6VUjZAZF6xkp6YZvz7v5WwO0GNM40unm_NclkJp6t9ft0QLXKZvN_WL5O1nE3V_7N_fKUki3FATZOahQS0iJ2W9tB_GnXOyLwQztdG_ewxhGNqj5aFoIkj6noKF7K7_OPzA6VJuZrFhDIWT3NUO0AX8Xou3X-c-PMYC_MygJ6coDgoAdMr_KSH--5CeSpBvFJwlIzQ7c84NlvlDtjOuZ6-D1a9xkBG9y_GkX2h1EbYjIeBUJesmLwCv3NgFB--Zivpz_HcubsHh0UVXvyGi3HjkC3GC34P_Rio6dUI6jyI0vCsnzyqUa2DaI63Gt2I--ktEqARbRz1iLLF5yv1U6KThDxl_d_rMGu2VNYTmRuivvsZuziQa0rK1OnOkLeuZmdukDWsSYyYrWP1y3FMa8MNc50DF_CNXdCXB2vUfc-GYZwcJilN_pl03nGA-hyKuaJkY5S-kJHULwWaLXTqi_fuhnkz7pnSXKeqZqDa3mSIFgoAg3Xvuua0t59XnyMCE_UozJ3xXgX96UcBBZxMZ31Z_kpK6z37fT8RE_OciDJn2N0h82cWcB-wIGCHSabvjYT2MWOtEXSlvjY7P6vps4O6cMIVUZ6ri7TFqeEBixubYSabQehAvE59JQXTww2eG_ztkigEFuPnBUqZ_QSD7kJHuGCKL75shxvz-VjBKLIc","kid":"openemr-key-001","use":"sig"}]},"scope":"openid offline_access api:oemr api:fhir system\/Patient.s user\/Patient.read user\/Patient.write user\/Observation.read","dsi_type":"none"}
+
+{"client_id":"Se7ZaR5VkkoF0kq3M7afZh9xSm3hq2YWd-Mu7vfDr7M","client_secret":"J_O4v_qnijZYKHD9RvnNpeLZhmRhM8zdbF5YSTiPq_TLYsCZ8uwQXDQLsXDp6rhknUJK-EjCa95BRmfZXnUhYw","registration_access_token":"_f3bUnyo230HOD6eaPs5jL0_xesrrMa2z62fSuj7Qo8","registration_client_uri":"https:\/\/localhost\/oauth2\/default\/client\/6uMuMmM6GasSFabe5guOgg","client_id_issued_at":1793297215,"client_secret_expires_at":0,"client_role":"user","contacts":["mstone@howardcc.edu"],"application_type":"private","client_name":"App5","redirect_uris":["http:\/\/localhost\/oauth2\/static\/redirect"],"token_endpoint_auth_method":"private_key_jwt","jwks":{"keys":[{"alg":"RS384","e":"AQAB","ext":true,"key_ops":["verify"],"kty":"RSA","n":"w6VUjZAZF6xkp6YZvz7v5WwO0GNM40unm_NclkJp6t9ft0QLXKZvN_WL5O1nE3V_7N_fKUki3FATZOahQS0iJ2W9tB_GnXOyLwQztdG_ewxhGNqj5aFoIkj6noKF7K7_OPzA6VJuZrFhDIWT3NUO0AX8Xou3X-c-PMYC_MygJ6coDgoAdMr_KSH--5CeSpBvFJwlIzQ7c84NlvlDtjOuZ6-D1a9xkBG9y_GkX2h1EbYjIeBUJesmLwCv3NgFB--Zivpz_HcubsHh0UVXvyGi3HjkC3GC34P_Rio6dUI6jyI0vCsnzyqUa2DaI63Gt2I--ktEqARbRz1iLLF5yv1U6KThDxl_d_rMGu2VNYTmRuivvsZuziQa0rK1OnOkLeuZmdukDWsSYyYrWP1y3FMa8MNc50DF_CNXdCXB2vUfc-GYZwcJilN_pl03nGA-hyKuaJkY5S-kJHULwWaLXTqi_fuhnkz7pnSXKeqZqDa3mSIFgoAg3Xvuua0t59XnyMCE_UozJ3xXgX96UcBBZxMZ31Z_kpK6z37fT8RE_OciDJn2N0h82cWcB-wIGCHSabvjYT2MWOtEXSlvjY7P6vps4O6cMIVUZ6ri7TFqeEBixubYSabQehAvE59JQXTww2eG_ztkigEFuPnBUqZ_QSD7kJHuGCKL75shxvz-VjBKLIc","kid":"openemr-key-001","use":"sig"}]},"scope":"openid offline_access api:oemr api:fhir system\/Patient.write system\/Patient.s user\/Patient.read user\/Patient.write user\/Observation.read","dsi_type":"none"}
